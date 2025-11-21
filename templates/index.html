@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Secret Santa — Emcar</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+  <!-- ❄ Top Snow Border -->
+  <div class="top-snow"></div>
+
+  <!-- ❄ Falling Snow Layer -->
+  <div class="snow">
+    {% for i in range(80) %}
+      <span style="
+        left: {{ (i * 13) % 100 }}%;
+        animation-duration: {{ 4 + (i % 6) }}s;
+        animation-delay: -{{ i % 5 }}s;
+        width: {{ 3 + (i % 4) }}px;
+        height: {{ 3 + (i % 4) }}px;
+      "></span>
+    {% endfor %}
+  </div>
+
+  <div class="container">
+
+    <header>
+      <img src="{{ url_for('static', filename='emcar-logo.png') }}"
+           alt="Emcar Logo"
+           class="logo">
+
+      <h1 style="
+        font-size: 40px;
+        margin-top: 0;
+        text-shadow: 0 0 10px gold, 0 0 20px white;
+      ">
+        🎅 Emcar Secret Santa 2024 🎄
+      </h1>
+    </header>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul class="flashes">
+          {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <!-- Secret Santa Form -->
+    <form method="POST">
+      <label for="giver">Enter your name:</label>
+      <input
+        type="text"
+        id="giver"
+        name="giver"
+        placeholder="Your name"
+        autocomplete="off"
+        required
+      />
+      <button type="submit">Get your Secret Santa</button>
+    </form>
+
+  </div>
+
+</body>
+</html>
+

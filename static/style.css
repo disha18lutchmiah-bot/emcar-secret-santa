@@ -1,0 +1,100 @@
+/* Full-page Christmas gradient background */
+/* Blue gradient Christmas background */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #e8f5ff 0%, #b3d9ff 20%, #003366 100%);
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Animated shifting background */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+/* Top snowflake decoration */
+.top-snow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 180px;
+    background-image: url("https://i.imgur.com/9yhnhya.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 1;
+    opacity: 0.9;
+}
+
+/* Falling snow particles */
+.snow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.snow span {
+    position: absolute;
+    top: -10px;
+    width: 5px;
+    height: 5px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: fall linear infinite;
+    box-shadow: 0 0 8px rgba(255,255,255,0.7);
+}
+
+/* Snow falling animation */
+@keyframes fall {
+    0% {
+        transform: translateY(0) translateX(0);
+    }
+    100% {
+        transform: translateY(110vh) translateX(40px);
+    }
+}
+
+/* Main container styling */
+.container {
+    max-width: 500px;
+    margin: 120px auto;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Inputs and buttons */
+input[type="text"] {
+    width: 80%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+button {
+    padding: 12px 25px;
+    background: #00d26a;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #00b85a;
+}
